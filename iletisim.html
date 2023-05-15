@@ -11,108 +11,196 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <style>
         body {
-            background-color: aliceblue;
+            background: #dce9f5;
+            color: #585353;
         }
 
-        .formiletisim {
-            margin-left: 600px;
+        .form {
+            width: 80%;
+            margin: auto;
+            margin-bottom: 20px;
+
+        }
+
+        input {
+
+            border-bottom: 1px solid rgba(#fff, .3);
+            background: transparent;
+            color: #5d5c5c;
         }
 
         h2 {
             text-align: center;
+        }
+
+        .error-msg {
+            font-size: 12px;
+            padding-top: 10px;
+            display: block;
+            color: orangered;
+
+        }
+
+        ul {
+            list-style-type: none;
         }
     </style>
 
 </head>
 
 <body>
-    
-    <script>
-        function validateForm(){
-            var x=document.forms["form1"]["isim"].value;
-            if(x==" "){
-                alert("İsim alanı boş bırakılamaz")
-            
-                return false;
-            }
-        }
 
-      
 
-    </script>
+
+
     <h2>İletişim Sayfası</h2>
-    <form  name="form1" onsubmit="return validateForm()">
+    <form class="form" id="form1" onclick="">
+        <ul>
+            <li>
+                <label>Adınız-soyadınız</label>
+                <input type="text" id="name">
 
-        <div class="formiletisim">
-            <div>
-                <label >Adınız-Soyadınız</label>
-                <input type="text" name="isim" id="isimsoyisim">
-            </div>
+            </li>
             <br>
-            <div>
-                <label >E-mail adresiniz</label>
-                <input type="email" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    >
-                
-            </div>
 
-            <h5>Cinsiyetiniz </h5>
-            <div >
-                <input  type="radio"  value="option1" name="cinsiyet">
-                <label >Kadın</label>
-            </div>
-            <div >
-                <input type="radio"  value="option2" name="cinsiyet">
-                <label >Erkek</label>
-            </div>
+            <li>
+                <label>E-mail adresiniz</label>
+                <input type="email" id="email">
+            </li>
             <br>
-            <h5>İlgi alanlarınız </h5>
-            <div >
-                <input " type="checkbox" value="" >
-                <label >
+            <li>
+                <h5>Cinsiyetiniz </h5>
+                <input type="radio" name="cinsiyet">
+                <label>Kadın</label>
+                <input type="radio" name="cinsiyet">
+                <label>Erkek</label>
+            </li>
+            <br>
+            <li>
+                <h5>İlgi alanlarınız </h5>
+                <input type="checkbox">
+                <label>
                     Spor yapmak
                 </label>
-            </div>
-            <div >
-                <input  type="checkbox" value="" >
-                <label >
+                <br>
+                <input type="checkbox">
+                <label>
                     Yemek yapmak
                 </label>
-            </div>
-            <div >
-                <input  type="checkbox" value="" >
-                <label >
+                <br>
+                <input type="checkbox">
+                <label>
                     Kodlama
                 </label>
-            </div>
-            <div >
-                <input  type="checkbox" >
+                <br>
+                <input type="checkbox">
                 <label>
                     Enstrüman çalmak
                 </label>
-            </div>
-            <div >
-                <input  type="checkbox" value="" >
+                <br>
+                <input type="checkbox">
                 <label>
                     Diğer
                 </label>
-            </div>
-
-            <h5>İletiniz</h5>
-            <div>
-                <textarea name="mesaj" id="ileti" cols="30" rows="8"
+            </li>
+            <br>
+            <li>
+                <h5>İletiniz</h5>
+                <textarea name="mesaj" id="message" cols="30" rows="8"
                     placeholder="Benimle paylaşmak istediğiniz başka bir şey var mı ?"></textarea>
-            </div>
-            <div>
+            </li>
+            <br>
+            <li>
                 <input type="submit" name="Gönder" id="gönderme butonu">
                 <input type="reset" name="Temizle" id="temizle butonu">
-            </div>
-        </div>
+            </li>
+
+
+        </ul>
 
     </form>
 
+    <script>
+       
+        // Form elemanlarına referans alınması
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
 
-  
+        // İsim alanı kontrolü
+        function validateName() {
+            const nameValue = nameInput.value.trim();
+
+            if (nameValue === '') {
+                setErrorFor(nameInput, 'İsim alanı boş olamaz');
+                return false;
+            } else {
+                setSuccessFor(nameInput);
+                return true;
+            }
+        }
+
+        // Email alanı kontrolü
+        function validateEmail() {
+            const emailValue = emailInput.value.trim();
+            const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (emailValue === '') {
+                setErrorFor(emailInput, 'E-posta alanı boş olamaz');
+                return false;
+            } else if (!emailFormat.test(emailValue)) {
+                setErrorFor(emailInput, 'Lütfen geçerli bir e-posta adresi girin');
+                return false;
+            } else {
+                setSuccessFor(emailInput);
+                return true;
+            }
+        }
+
+        // Mesaj alanı kontrolü
+        function validateMessage() {
+            const messageValue = messageInput.value.trim();
+
+            if (messageValue === '') {
+                setErrorFor(messageInput, 'Mesaj alanı boş olamaz');
+                return false;
+            } else {
+                setSuccessFor(messageInput);
+                return true;
+            }
+        }
+
+        // Hata mesajı ayarlama
+        function setErrorFor(input, message) {
+            const formControl = input.parentElement;
+            const small = formControl.querySelector('small');
+            input.classList.add('is-invalid');
+            small.innerText = message;
+        }
+
+        // Başarı mesajı ayarlama
+        function setSuccessFor(input) {
+            const formControl = input.parentElement;
+            input.classList.remove('is-invalid');
+        }
+
+        // Form gönderim işlemi
+        const form = document.getElementById('form1');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            if (validateName() && validateEmail() && validateMessage()) {
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                // Form verilerini başka bir sayfada göstermek için yapılacaklar
+                console.log(data);
+            }
+        });
+
+    </script>
+
+
 </body>
 
 </html>
