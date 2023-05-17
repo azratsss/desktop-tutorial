@@ -48,6 +48,14 @@
             margin-top: auto;
             font-family: "Oswald", sans-serif;
         }
+
+        aside {
+            float: left;
+            text-indent: 15px;
+            margin: 50px;
+            padding: 50px;
+
+        }
     </style>
 
 </head>
@@ -58,7 +66,27 @@
         <ul id="movies">
 
         </ul>
+        <aside>
+            <h3>Film-dizi İzlemek</h3>
+            <p>
+                Birçok şeye ilgi duysam da en sevdiğim ve keyif aldığım alan bir şeyler izlemek oluyor. <br>
+                Genelde şehir içi ulaşımdaki yarım saatlik kısa sürelerde bile bir şeyler izlerim. Uzun
+                diziler<br> izlemeyi seviyorum çünkü karaktere alışabileceğim ve bağ kurabileceğim bir imkan
+                sunuyor.<br>
+                Genelde bilim kurgu,aksiyon ve dram türlerini izlemeyi sevsem de konusu ilgimi çeken her <br> şeyi
+                izlerim.
+                Dizilerde tercihim özellikle sitcom dizilerdir çünkü bu tür bana dah samimi ve <br> sıcak geliyor.
+            </p>
+            <p>
+                Ayrıca, film izlemek benim için sosyal bir etkinlik. Arkadaşlarımla veya kardeşimle birlikte <br> film 
+                izlemek ve ortak konular üzerinde sohbet etme fırsatı sunuyor. Film 
+                festivalleri, sinema<br> kulüpleri veya film tartışma gruplarına katılarak, benzer ilgi  alanlarına sahip
+                kişilerle tanışabilir<br> ve fikir alışverişinde bulabilirsiniz.
+            </p>
+        </aside>
     </div>
+
+
     <script>
         const url = 'https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr';
         const options = {
@@ -73,23 +101,22 @@
                 const response = await fetch(url, options);
                 const result = await response.json();
                 console.log(result);
-                
-                const ulItem=document.getElementById("movies");
-                for(var i=0;i<result.d.length;i++)
-                {
-                    const liItem=document.createElement("li");
-                    const imgItem=document.createElement("img");
-                    imgItem.src=result.d[i].i.imageUrl;
-                    
-                    
 
-                    liItem.innerText=result.d[i].l;
+                const ulItem = document.getElementById("movies");
+                for (var i = 0; i < result.d.length; i++) {
+                    const liItem = document.createElement("li");
+                    const imgItem = document.createElement("img");
+                    imgItem.src = result.d[i].i.imageUrl;
+
+
+
+                    liItem.innerText = result.d[i].l;
                     liItem.appendChild(imgItem);
                     ulItem.appendChild(liItem);
                 }
 
-                
-                
+
+
             } catch (error) {
                 console.error(error);
             }
