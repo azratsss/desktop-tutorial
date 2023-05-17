@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=7, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <style>
+        body {
+            background: #000;
+
+        }
+
+        .movies {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .movies li {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            list-style: none;
+            color: #ececec;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            background: #272727;
+
+        }
+
+        .movies li img {
+            max-width: 300px;
+            border-radius: 12px;
+        }
+
+        .movies li h2 {
+            color: #fff;
+            font-size: 1.8em;
+            padding: 15px 10px 0;
+            margin-top: auto;
+            font-family: "Oswald", sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="movies">
+        <ul id="movies">
+
+        </ul>
+    </div>
+    <script>
+        const url = 'https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr';
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '1e34b325aamsh679d7d0b67f8bafp194395jsn9f840b906169',
+                'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+            }
+        };
+        async function FetchData() {
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json();
+                console.log(result);
+                
+                const ulItem=document.getElementById("movies");
+                for(var i=0;i<result.d.length;i++)
+                {
+                    const liItem=document.createElement("li");
+                    const imgItem=document.createElement("img");
+                    imgItem.src=result.d[i].i.imageUrl;
+                    
+                    
+
+                    liItem.innerText=result.d[i].l;
+                    liItem.appendChild(imgItem);
+                    ulItem.appendChild(liItem);
+                }
+
+                
+                
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        FetchData();
+    </script>
+</body>
+
+</html>
