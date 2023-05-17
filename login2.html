@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body {
+            background-color: aliceblue;
+        }
+
+        form {
+            display: table;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <form class="form" id="form1" action="login.php">
+        <div class="small"></div>
+        <ul>
+            <li>
+                <label>Adınız-soyadınız</label>
+                <input type="text" id="name" >
+                <span class="small"></span>
+
+            </li>
+            <br>
+
+            <li>
+                <label>E-mail adresiniz</label>
+                <input type="email"  id="email">
+                <span class="small"></span>
+            </li>
+            <br>
+            <li>
+                <h5>İletiniz</h5>
+                <textarea name="mesaj" id="message" cols="30" rows="8" 
+                    placeholder="Benimle paylaşmak istediğiniz başka bir şey var mı ?"></textarea>
+                    <span class="small"></span>
+            </li>
+            <br>
+            <li>
+                <input type="submit" name="Gönder" id="gönderme butonu">
+                <input type="reset" name="Temizle" id="temizle butonu">
+            </li>
+        </ul>
+
+
+        <script>
+       
+        
+        
+            // İsim alanı kontrolü
+            function validateName() {
+                
+                const nameInput = document.getElementById('name');
+                let nameValue = nameInput.value;
+                if (nameValue === '') {
+                    setErrorFor(nameInput, 'Lütfen bu alanı doldurun');
+                    return false;
+                } else {
+                    setSuccessFor(nameInput);
+                    return true;
+                }
+            }
+    
+            // Email alanı kontrolü
+            function validateEmail() {
+               
+                const emailInput = document.getElementById('email');
+                let emailValue = emailInput.value;
+                let emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+                if (emailValue === '') {
+                    setErrorFor(emailInput, 'E-posta alanı boş olamaz');
+                    return false;
+                } else if (!emailFormat.test(emailValue)) {
+                    setErrorFor(emailInput, 'Lütfen geçerli bir e-posta adresi girin');
+                    return false;
+                } else {
+                    setSuccessFor(emailInput);
+                    return true;
+                }
+            }
+    
+            // Mesaj alanı kontrolü
+            function validateMessage() {
+                
+                const messageInput = document.getElementById('message');
+                let messageValue = messageInput.value;
+                if (messageValue === '') {
+                    setErrorFor(messageInput, 'Mesaj alanı boş olamaz');
+                    return false;
+                } else {
+                    setSuccessFor(messageInput);
+                    return true;
+                }
+            }
+    
+            // Hata mesajı ayarlama
+            function setErrorFor(input, message) {
+                const formControl = input.parentElement;
+                const small = formControl.querySelector('.small');
+                input.classList.add('is-invalid');
+               
+                small.innerText = message;
+            }
+    
+            // Başarı mesajı ayarlama
+            function setSuccessFor(input) {
+                const formControl = input.parentElement;
+                input.classList.remove('is-invalid');
+            }
+    
+            // Form gönderim işlemi
+            window.onload=()=>{
+                const form = document.getElementById('form1');
+            
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+    
+                    if (validateName() && validateEmail() && validateMessage()) {
+                        const formData = new FormData(form);
+                        const data = Object.fromEntries(formData.entries());
+    
+                        // Form verilerini başka bir sayfada göstermek için yapılacaklar
+                        console.log(data);
+                    }
+                });
+             }
+        </script>
+    
+    
+</body>
+</html>
