@@ -1,0 +1,306 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-font-smoothing: antialiased;
+            -o-font-smoothing: antialiased;
+            font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        body {
+            font-family: "Roboto", Helvetica, Arial, sans-serif;
+            font-weight: 100;
+            font-size: 12px;
+            line-height: 30px;
+            color: #777;
+            background: #27347a;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #form1 input[type="text"],
+        #form1 input[type="email"],
+        #form1 input[type="tel"],
+        #form1 input[type="url"],
+        #form1 textarea,
+        #form1 button[type="submit"]
+        #form1 button[type="reset"]
+        {
+            font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+        }
+
+        #form1 {
+            background: #F9F9F9;
+            padding: 25px;
+            margin: 150px 0;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+
+        #form1 h3 {
+            display: block;
+            font-size: 30px;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        #form1 h4 {
+            margin: 5px 0 15px;
+            display: block;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        fieldset {
+            border: medium none !important;
+            margin: 0 0 10px;
+            min-width: 100%;
+            padding: 0;
+            width: 100%;
+        }
+
+        #form1 input[type="text"],
+        #form1 input[type="email"],
+        #form1 input[type="tel"],
+        #form1 input[type="url"],
+        #form1 textarea {
+            width: 100%;
+            border: 1px solid #ccc;
+            background: #FFF;
+            margin: 0 0 5px;
+            padding: 10px;
+        }
+
+        #form1 input[type="text"]:hover,
+        #form1 input[type="email"]:hover,
+        #form1 input[type="tel"]:hover,
+        #form1 input[type="url"]:hover,
+        #form1 textarea:hover {
+            -webkit-transition: border-color 0.3s ease-in-out;
+            -moz-transition: border-color 0.3s ease-in-out;
+            transition: border-color 0.3s ease-in-out;
+            border: 1px solid #aaa;
+        }
+
+        #form1 textarea {
+            height: 100px;
+            max-width: 100%;
+            resize: none;
+        }
+
+        #form1 button[type="submit"] {
+            cursor: pointer;
+            width: 100%;
+            border: none;
+            background: #a8cee9;
+            color: #FFF;
+            margin: 0 0 5px;
+            padding: 10px;
+            font-size: 15px;
+        }
+        #form1 button[type="reset"]{
+            cursor: pointer;
+            width: 100%;
+            border: none;
+            background: #a8cee9;
+            color: #FFF;
+            margin: 0 0 5px;
+            padding: 10px;
+            font-size: 15px;
+        }
+
+        #form1 button[type="reset"]:hover{
+            background: #27347a;
+            -webkit-transition: background 0.3s ease-in-out;
+            -moz-transition: background 0.3s ease-in-out;
+            transition: background-color 0.3s ease-in-out;
+        }
+        #form1 button[type="submit"]:hover {
+            background: #27347a;
+            -webkit-transition: background 0.3s ease-in-out;
+            -moz-transition: background 0.3s ease-in-out;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        #form1 button[type="submit"]:active {
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        #form1 button[type="reset"]:active{
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        .copyright {
+            text-align: center;
+        }
+
+        #form1 input:focus,
+        #form1 textarea:focus {
+            outline: 0;
+            border: 1px solid #aaa;
+        }
+
+        ::-webkit-input-placeholder {
+            color: #888;
+        }
+
+        :-moz-placeholder {
+            color: #888;
+        }
+
+        ::-moz-placeholder {
+            color: #888;
+        }
+
+        :-ms-input-placeholder {
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form id="form1" action="login.php" method="post">
+            <h3>İletişim</h3>
+            <h4>Bilgiler</h4>
+            <div class="small"></div>
+            <fieldset>
+                <input placeholder="Adınız-Soyadınız" type="text" tabindex="1" id="name" autofocus><br>
+                <span class="small"></span>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Email adresiniz" type="email" tabindex="2" id="email">
+                <span class="small"></span>
+            </fieldset>
+            <fieldset>
+                Cinsiyetiniz : <br>
+                <input  type="radio" name="cinsiyet"> Kadın <br>
+                <input type="radio" name="cinsiyet">Erkek
+            </fieldset>
+            
+            <fieldset>
+                İlgi alanlarınız :  <br>
+                <input type="checkbox" >Spor yapmak <br>
+                <input type="checkbox" >Yemek yapmak <br>
+                <input type="checkbox" >Kodlama <br>
+                <input type="checkbox" >Enstrüman çalmak <br>
+                <input type="checkbox" >Diğer...
+               
+            </fieldset>
+
+            <fieldset>
+                <textarea name="mesaj" id="message"  cols="30" rows="10"></textarea>
+                <span class="small"></span>
+            </fieldset>
+
+            <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Kaydı Gönder</button>
+                <button name="reset" type="reset" id="contact-reset">Kaydı Temizle</button>
+            </fieldset>
+        </form>
+    </div>
+
+
+    <script>
+       
+        
+        
+        // İsim alanı kontrolü
+        function validateName() {
+            
+            const nameInput = document.getElementById('name');
+            let nameValue = nameInput.value;
+            if (nameValue === '') {
+                setErrorFor(nameInput, 'Lütfen bu alanı doldurun');
+                return false;
+            } else {
+                setSuccessFor(nameInput);
+                return true;
+            }
+        }
+
+        // Email alanı kontrolü
+        function validateEmail() {
+           
+            const emailInput = document.getElementById('email');
+            let emailValue = emailInput.value;
+            let emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (emailValue === '') {
+                setErrorFor(emailInput, 'E-posta alanı boş olamaz');
+                return false;
+            } else if (!emailFormat.test(emailValue)) {
+                setErrorFor(emailInput, 'Lütfen geçerli bir e-posta adresi girin');
+                return false;
+            } else {
+                setSuccessFor(emailInput);
+                return true;
+            }
+        }
+
+        // Mesaj alanı kontrolü
+        function validateMessage() {
+            
+            const messageInput = document.getElementById('message');
+            let messageValue = messageInput.value;
+            if (messageValue === '') {
+                setErrorFor(messageInput, 'Mesaj alanı boş olamaz');
+                return false;
+            } else {
+                setSuccessFor(messageInput);
+                return true;
+            }
+        }
+
+        // Hata mesajı ayarlama
+        function setErrorFor(input, message) {
+            const formControl = input.parentElement;
+            const small = formControl.querySelector('.small');
+            input.classList.add('is-invalid');
+           
+            small.innerText = message;
+        }
+
+        // Başarı mesajı ayarlama
+        function setSuccessFor(input) {
+            const formControl = input.parentElement;
+            input.classList.remove('is-invalid');
+        }
+
+        // Form gönderim işlemi
+        window.onload=()=>{
+            const form = document.getElementById('form1');
+        
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                if (validateName() && validateEmail() && validateMessage()) {
+                    const formData = new FormData(form);
+                    const data = Object.fromEntries(formData.entries());
+
+                    // Form verilerini başka bir sayfada göstermek için yapılacaklar
+                    console.log(data);
+                }
+            });
+         }
+    </script>
+
+</body>
+
+</html>
