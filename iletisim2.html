@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Login</title>
+    <title>İletişim</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <style>
         @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
 
@@ -16,7 +18,7 @@
             -webkit-font-smoothing: antialiased;
             -moz-font-smoothing: antialiased;
             -o-font-smoothing: antialiased;
-            font-smoothing: antialiased;
+
             text-rendering: optimizeLegibility;
         }
 
@@ -41,9 +43,7 @@
         #form1 input[type="tel"],
         #form1 input[type="url"],
         #form1 textarea,
-        #form1 button[type="submit"]
-        #form1 button[type="reset"]
-        {
+        #form1 button[type="submit"] #form1 button[type="reset"] {
             font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
         }
 
@@ -115,7 +115,8 @@
             padding: 10px;
             font-size: 15px;
         }
-        #form1 button[type="reset"]{
+
+        #form1 button[type="reset"] {
             cursor: pointer;
             width: 100%;
             border: none;
@@ -126,12 +127,13 @@
             font-size: 15px;
         }
 
-        #form1 button[type="reset"]:hover{
+        #form1 button[type="reset"]:hover {
             background: #27347a;
             -webkit-transition: background 0.3s ease-in-out;
             -moz-transition: background 0.3s ease-in-out;
             transition: background-color 0.3s ease-in-out;
         }
+
         #form1 button[type="submit"]:hover {
             background: #27347a;
             -webkit-transition: background 0.3s ease-in-out;
@@ -143,9 +145,10 @@
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
         }
 
-        #form1 button[type="reset"]:active{
+        #form1 button[type="reset"]:active {
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
         }
+
         .copyright {
             text-align: center;
         }
@@ -172,40 +175,67 @@
             color: #888;
         }
     </style>
+
+
 </head>
 
 <body>
+    
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="index.html">Hakkında</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cv.html">Özgeçmiş</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sehrim.html">Şehrim</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mirasımız.html">Mirasımız</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="apimovie.html">İlgi Alanlarım</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="#">İletişim Sayfası</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="log.html">Login sayfası</a>
+        </li>
+      </ul>
+
     <div class="container">
-        <form id="form1" action="login.php" method="post">
+        <form id="form1" action="iletisim.php" method="post">
             <h3>İletişim</h3>
             <h4>Bilgiler</h4>
             <div class="small"></div>
             <fieldset>
-                <input placeholder="Adınız-Soyadınız" type="text" tabindex="1" id="name" autofocus><br>
+                <input placeholder="Adınız-Soyadınız" type="text" tabindex="1" id="name" name="name" autofocus><br>
                 <span class="small"></span>
             </fieldset>
             <fieldset>
-                <input placeholder="Email adresiniz" type="email" tabindex="2" id="email">
+                <input placeholder="Email adresiniz" type="email" tabindex="2" id="email" name="email">
                 <span class="small"></span>
             </fieldset>
             <fieldset>
                 Cinsiyetiniz : <br>
-                <input  type="radio" name="cinsiyet"> Kadın <br>
-                <input type="radio" name="cinsiyet">Erkek
-            </fieldset>
-            
-            <fieldset>
-                İlgi alanlarınız :  <br>
-                <input type="checkbox" >Spor yapmak <br>
-                <input type="checkbox" >Yemek yapmak <br>
-                <input type="checkbox" >Kodlama <br>
-                <input type="checkbox" >Enstrüman çalmak <br>
-                <input type="checkbox" >Diğer...
-               
+                <input type="radio" name="cinsiyet" value="1"> Kadın <br>
+                <input type="radio" name="cinsiyet" value="2">Erkek
             </fieldset>
 
             <fieldset>
-                <textarea name="mesaj" id="message"  cols="30" rows="10"></textarea>
+                İlgi alanlarınız : <br>
+                <input type="checkbox" name="ilgialani[]" value="Spor yapmak">Spor yapmak <br>
+                <input type="checkbox"name="ilgialani[]" value="Yemek yapmak">Yemek yapmak <br>
+                <input type="checkbox" name="ilgialani[]" value="Kodlama">Kodlama <br>
+                <input type="checkbox"name="ilgialani[]" value="Enstrüman çalmak">Enstrüman çalmak <br>
+                <input type="checkbox" name="ilgialani[]" value="Diğer">Diğer...
+
+            </fieldset>
+
+            <fieldset>
+                <textarea name="message" id="message" cols="30" rows="10"></textarea>
                 <span class="small"></span>
             </fieldset>
 
@@ -217,13 +247,14 @@
     </div>
 
 
+   
     <script>
-       
-        
-        
+
+
+
         // İsim alanı kontrolü
         function validateName() {
-            
+    
             const nameInput = document.getElementById('name');
             let nameValue = nameInput.value;
             if (nameValue === '') {
@@ -234,14 +265,14 @@
                 return true;
             }
         }
-
+    
         // Email alanı kontrolü
         function validateEmail() {
-           
+    
             const emailInput = document.getElementById('email');
             let emailValue = emailInput.value;
             let emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+    
             if (emailValue === '') {
                 setErrorFor(emailInput, 'E-posta alanı boş olamaz');
                 return false;
@@ -253,10 +284,10 @@
                 return true;
             }
         }
-
+    
         // Mesaj alanı kontrolü
         function validateMessage() {
-            
+    
             const messageInput = document.getElementById('message');
             let messageValue = messageInput.value;
             if (messageValue === '') {
@@ -267,38 +298,45 @@
                 return true;
             }
         }
-
+    
         // Hata mesajı ayarlama
         function setErrorFor(input, message) {
             const formControl = input.parentElement;
             const small = formControl.querySelector('.small');
             input.classList.add('is-invalid');
-           
+    
             small.innerText = message;
         }
-
+    
         // Başarı mesajı ayarlama
         function setSuccessFor(input) {
             const formControl = input.parentElement;
             input.classList.remove('is-invalid');
         }
-
+    
         // Form gönderim işlemi
-        window.onload=()=>{
+        window.onload = () => {
             const form = document.getElementById('form1');
-        
+    
             form.addEventListener('submit', (e) => {
-                e.preventDefault();
-
+               
+    
                 if (validateName() && validateEmail() && validateMessage()) {
                     const formData = new FormData(form);
                     const data = Object.fromEntries(formData.entries());
-
+    
                     // Form verilerini başka bir sayfada göstermek için yapılacaklar
                     console.log(data);
+                    
+                }
+                else{
+                    e.preventDefault();
+
                 }
             });
-         }
+        }
+
+      
     </script>
 
 </body>
